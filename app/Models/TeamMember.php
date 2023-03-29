@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class TeamMember extends Model
 {
@@ -20,8 +22,8 @@ class TeamMember extends Model
         return $this->belongsTo(Staff::class);
     }
 
-    public function team()
+    public function team(): MorphMany
     {
-        return $this->belongsTo(Team::class);
+        return $this->morphMany(Team::class, 'teamable');
     }
 }

@@ -28,43 +28,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="teamable_type"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Team Type') }}</label>
-
-                                <div class="col-md-6">
-                                    <select id="teamable_type"
-                                        class="form-control @error('teamable_type') is-invalid @enderror"
-                                        name="teamable_type" required>
-                                        <option value="App\Models\Department">{{ __('Department') }}</option>
-                                        <option value="App\Models\Project">{{ __('Project') }}</option>
-                                    </select>
-
-                                    @error('teamable_type')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="teamable_id"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Teamable ID') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="teamable_id" type="text"
-                                        class="form-control @error('teamable_id') is-invalid @enderror" name="teamable_id"
-                                        value="{{ old('teamable_id') }}" required>
-
-                                    @error('teamable_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

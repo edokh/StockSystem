@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Team extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'teamable_type', 'teamable_id'];
 
-    public function teamable()
+    public function teamable(): MorphTo
     {
         return $this->morphTo();
     }
     public function members()
     {
-        return $this->belongsToMany(Staff::class, 'team_members')->withPivot('role')->withTimestamps();
+        return $this->hasMany(TeamMember::class);
     }
 }

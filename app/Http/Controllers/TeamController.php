@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Models\Team;
 
 class TeamController extends Controller
 {
     public function index()
     {
         $teams = Team::all();
-
         return view('teams.index', compact('teams'));
     }
 
@@ -21,40 +20,30 @@ class TeamController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255'
-        ]);
-
-        $team = Team::create($data);
-
-        return redirect()->route('teams.show', $team->id);
+        $team = new Team;
+        $team->name = $request->input('name');
+        $team->save();
+        return redirect()->route('teams.index');
     }
 
-    public function show(Team $team)
+    public function edit($id)
     {
-        return view('teams.show', compact('team'));
-    }
-
-    public function edit(Team $team)
-    {
+        $team = Team::findOrFail($id);
         return view('teams.edit', compact('team'));
     }
 
-    public function update(Request $request, Team $team)
+    public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255'
-        ]);
-
-        $team->update($data);
-
-        return redirect()->route('teams.show', $team->id);
+        $team = Team::findOrFail($id);
+        $team->name = $request->input('name');
+        $team->save();
+        return redirect()->route('teams.index');
     }
 
-    public function destroy(Team $team)
+    public function destroy($id)
     {
+        $team = Team::findOrFail($id);
         $team->delete();
-
         return redirect()->route('teams.index');
     }
 }

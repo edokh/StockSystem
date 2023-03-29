@@ -7,6 +7,7 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\DeviceTypeController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\StaffController;
@@ -29,13 +30,25 @@ Route::get('/', function () {
 });
 
 
-Route::get('/cp', function () {
-    return view('adminpanel');
-});
+// Route::get('/cp', function () {
+//     return view('adminpanel');
+// });
 Route::get('/do', function () {
     return view('do');
-});
+})->middleware('auth');
 
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/cp', function () {
+        // return 'this is admin';
+        return view('adminpanel');
+    });
+
+    // Route::view('/dashboard/{any}', 'dashboard')
+    // ->middleware('auth')
+    // ->where('any', '.*');
+});
 Route::resource('/cp/users', UserController::class);
 Route::resource('/cp/faculties', FacultyController::class);
 Route::resource('/cp/departments', DepartmentController::class);
@@ -45,3 +58,4 @@ Route::resource('/cp/device-types', DeviceTypeController::class);
 Route::resource('/cp/devices', DeviceController::class);
 Route::resource('/cp/teams', TeamController::class);
 Route::resource('/cp/team-members', TeamMemberController::class);
+Route::resource('/cp/reports', ReportController::class);

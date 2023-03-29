@@ -1,18 +1,18 @@
 @extends('dashboard.dashboardLayout')
-@section('title', 'Create Members')
+@section('title', 'Edit Room')
 
 @section('content')
-    <div class="row  ">
+    <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4> {{ __('Create Room') }}</h4>
+                    <h4>Edit Room</h4>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('team-members.store') }}">
+                    <form method="POST" action="{{ route('team-members.update', $teamMember->id) }}">
                         @csrf
-
+                        @method('PUT')
 
                         <div class="form-group">
                             <label for="role">{{ __('Role') }}</label>
@@ -20,7 +20,7 @@
                             <div class="col-md-6">
                                 <input id="role" type="text"
                                     class="form-control @error('role') is-invalid @enderror" name="role"
-                                    value="{{ old('role') }}" required autocomplete="role">
+                                    value="{{ old('role', $teamMember->role) }}" required autocomplete="role">
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
@@ -38,8 +38,10 @@
                                     name="staff_id" required>
                                     <option value="" disabled selected>Select department</option>
                                     @foreach ($staffMembers as $member)
-                                        <option value="{{ $member->id }}">
-                                            {{ $member->user->name }} - {{ $member->department->name }}</option>
+                                        <option value="{{ $member->id }}"
+                                            {{ old('staff_id', $teamMember->staff_id) == $member->id ? 'selected' : '' }}>
+                                            {{ $member->user->name }} - {{ $member->department->name }}
+                                        </option>
                                     @endforeach
                                 </select>
 
@@ -50,6 +52,8 @@
                                 @enderror
                             </div>
                         </div>
+
+
                         <div class="form-group">
                             <label for="team_id">{{ __('Team') }}</label>
                             <div class="col-md-6">
@@ -57,8 +61,10 @@
                                     name="team_id" required>
                                     <option value="" disabled selected>Select department</option>
                                     @foreach ($teams as $team)
-                                        <option value="{{ $team->id }}">
-                                            {{ $team->name }}</option>
+                                        <option value="{{ $team->id }}"
+                                            {{ old('team_id', $teamMember->team_id) == $team->id ? 'selected' : '' }}>
+                                            {{ $team->name }}
+                                        </option>
                                     @endforeach
                                 </select>
 
@@ -70,13 +76,12 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                         <a href="{{ route('team-members.index') }}" class="btn btn-secondary">Cancel</a>
 
                     </form>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
