@@ -36,7 +36,7 @@
                             <div class="col-md-6">
                                 <select id="staff_id" class="form-control @error('staff_id') is-invalid @enderror"
                                     name="staff_id" required>
-                                    <option value="" disabled selected>Select department</option>
+                                    <option value="" disabled selected>Select staff</option>
                                     @foreach ($staffMembers as $member)
                                         <option value="{{ $member->id }}">
                                             {{ $member->user->name }} - {{ $member->department->name }}</option>
@@ -55,7 +55,7 @@
                             <div class="col-md-6">
                                 <select id="team_id" class="form-control @error('team_id') is-invalid @enderror"
                                     name="team_id" required>
-                                    <option value="" disabled selected>Select department</option>
+                                    <option value="" disabled selected>Select team</option>
                                     @foreach ($teams as $team)
                                         <option value="{{ $team->id }}">
                                             {{ $team->name }}</option>
