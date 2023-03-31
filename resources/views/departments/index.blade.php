@@ -15,7 +15,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Department ID</th>
+                              
                                 <th>Faculty</th>
                                 <th>Action</th>
                             </tr>
@@ -25,7 +25,7 @@
                                 <tr>
                                     <td>{{ $department->id }}</td>
                                     <td>{{ $department->name }}</td>
-                                    <td>{{ $department->department_id }}</td>
+                                  
                                     <td>{{ $department->faculty->name }}</td>
                                     <td>
                                         <a href="{{ route('departments.show', $department->id) }}"
