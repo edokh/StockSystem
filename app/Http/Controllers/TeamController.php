@@ -13,6 +13,12 @@ class TeamController extends Controller
         return view('teams.index', compact('teams'));
     }
 
+    public function show($id)
+    {
+        $team = Team::find($id);
+        return view('teams.show', compact('team'));
+    }
+
     public function create()
     {
         return view('teams.create');
@@ -22,6 +28,7 @@ class TeamController extends Controller
     {
         $team = new Team;
         $team->name = $request->input('name');
+        $team->team_type = $request->input('team_type');
         $team->save();
         return redirect()->route('teams.index');
     }
@@ -36,6 +43,7 @@ class TeamController extends Controller
     {
         $team = Team::findOrFail($id);
         $team->name = $request->input('name');
+        $team->team_type = $request->input('team_type');
         $team->save();
         return redirect()->route('teams.index');
     }

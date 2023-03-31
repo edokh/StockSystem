@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Team extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'teamable_type', 'teamable_id'];
+    protected $fillable = ['name', 'teamable_type', 'teamable_id', 'team_type'];
 
     public function teamable(): MorphTo
     {
