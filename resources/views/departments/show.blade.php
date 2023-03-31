@@ -20,10 +20,7 @@
                                 <td>Name</td>
                                 <td>{{ $department->name }}</td>
                             </tr>
-                            <tr>
-                                <td>Department ID</td>
-                                <td>{{ $department->department_id }}</td>
-                            </tr>
+                    
                             <tr>
                                 <td>Faculty</td>
                                 <td>{{ $department->faculty->name }}</td>

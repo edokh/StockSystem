@@ -28,21 +28,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }} "
-                            style="display: none">
-                            <label for="department_id">Department ID</label>
-
-                            <div class="col-md-6">
-                                <input id="department_id" type="text" class="form-control" name="department_id"
-                                    value="test" required>
-
-                                @if ($errors->has('department_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('department_id') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    
 
                         <div class="form-group{{ $errors->has('faculty_id') ? ' has-error' : '' }}">
                             <label for="faculty_id">Faculty</label>
