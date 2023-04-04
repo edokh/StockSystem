@@ -11,8 +11,8 @@ class ReportController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->can('admin')) {
-            $reports = Report::with('device', 'user')->get();
+        if (auth()->user()->canAny(['admin','maintainer'])) {
+            $reports = Report::with('device', 'user')->orderBy('created_at', 'desc')->get();
         } else {
             $reports = Report::with('device', 'user')->where('user_id', auth()->user()->id)->get();
         }
@@ -27,7 +27,17 @@ class ReportController extends Controller
 
     public function create()
     {
-        $devices = Device::all();
+
+        $query = Device::query();
+
+        if (auth()->user()->can('staff'))
+        {
+            $query->leftJoin('rooms', 'rooms.id', '=', 'devices.room_id')
+                ->leftJoin('staff', 'staff.department_id', '=', 'rooms.department_id')
+                ->where('staff.user_id', auth()->user()->id);
+        }
+
+        $devices = $query->get();
         $users = User::all();
 
         return view('reports.create', compact('devices', 'users'));

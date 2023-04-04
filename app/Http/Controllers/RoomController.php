@@ -10,7 +10,13 @@ class RoomController extends Controller
 {
     public function index()
     {
-        $rooms = Room::with('department')->get();
+        $query = Room::query()->with('department');
+        if (auth()->user()->can('staff'))
+        {
+            $query->leftJoin('staff', 'staff.department_id', '=', 'rooms.department_id')
+                ->where('staff.user_id', auth()->user()->id);
+        }
+        $rooms = $query->get();
         return view('rooms.index', compact('rooms'));
     }
     public function show($id)

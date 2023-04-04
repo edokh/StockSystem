@@ -11,7 +11,15 @@ class DeviceController extends Controller
 {
     public function index()
     {
-        $devices = Device::with('deviceType', 'room')->get();
+        $query = Device::query()->with('deviceType', 'room');
+
+        if (auth()->user()->can('staff'))
+        {
+            $query->leftJoin('rooms', 'rooms.id', '=', 'devices.room_id')
+                ->leftJoin('staff', 'staff.department_id', '=', 'rooms.department_id')
+                ->where('staff.user_id', auth()->user()->id);
+        }
+        $devices= $query->get();
         return view('devices.index', compact('devices'));
     }
 
