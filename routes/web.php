@@ -33,6 +33,11 @@ Route::get('/', function () {
     }
     return view('welcome');
 });
+Route::get('/test', function () {
+    echo auth()->user()->can('admin') ? 'true' : 'false';
+    echo auth()->user()->can('maintainer')? 'true' : 'false';
+    echo auth()->user()->can('staff')? 'true' : 'false';
+})->name('home');
 
 Route::get('/cp', function () {
     return view('adminpanel');

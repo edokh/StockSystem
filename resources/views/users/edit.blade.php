@@ -27,7 +27,8 @@
                             <select class="form-control" id="usertype" name="usertype" required>
                                 <option value="">-- Select Usertype --</option>
                                 <option value="admin" @if ($user->usertype == 'admin') selected @endif>Admin</option>
-                                <option value="user" @if ($user->usertype == 'user') selected @endif>User</option>
+                                <option value="staff" @if ($user->usertype == 'staff') selected @endif>Staff</option>
+                                <option value="maintainer" @if ($user->usertype == 'maintainer') selected @endif>Maintainer</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>

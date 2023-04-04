@@ -31,7 +31,8 @@
                              <select class="form-control" id="usertype" name="usertype" required>
                                  <option value="">-- Select Usertype --</option>
                                  <option value="admin">Admin</option>
-                                 <option value="user">User</option>
+                                 <option value="staff">Staff</option>
+                                 <option value="maintainer">Maintainer</option>
                              </select>
                          </div>
                          <button type="submit" class="btn btn-primary">Create</button>
