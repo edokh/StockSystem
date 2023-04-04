@@ -11,7 +11,11 @@ class ReportController extends Controller
 {
     public function index()
     {
-        $reports = Report::with('device', 'user')->get();
+        if (auth()->user()->can('admin')) {
+            $reports = Report::with('device', 'user')->get();
+        } else {
+            $reports = Report::with('device', 'user')->where('user_id', auth()->user()->id)->get();
+        }
         return view('reports.index', compact('reports'));
     }
 
@@ -25,13 +29,14 @@ class ReportController extends Controller
     {
         $devices = Device::all();
         $users = User::all();
+
         return view('reports.create', compact('devices', 'users'));
     }
 
     public function store(Request $request)
     {
 
-
+       $request->merge(['user_id' => auth()->user()->id]);
         Report::create($request->all());
 
         return redirect()->route('reports.index')
@@ -49,7 +54,7 @@ class ReportController extends Controller
 
     public function update(Request $request, Report $report)
     {
-
+        $request->merge(['user_id' => auth()->user()->id]);
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
         ]);

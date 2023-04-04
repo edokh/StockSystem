@@ -67,25 +67,25 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="user_id">{{ __('User') }}</label>
+{{--                        <div class="form-group">--}}
+{{--                            <label for="user_id">{{ __('User') }}</label>--}}
 
-                            <div class="col-md-6">
-                                <select id="user_id" class="form-control @error('user_id') is-invalid @enderror"
-                                    name="user_id" required>
-                                    <option value="" disabled selected>Select user</option>
-                                    @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endforeach
-                                </select>
+{{--                            <div class="col-md-6">--}}
+{{--                                <select id="user_id" class="form-control @error('user_id') is-invalid @enderror"--}}
+{{--                                    name="user_id" required>--}}
+{{--                                    <option value="" disabled selected>Select user</option>--}}
+{{--                                    @foreach ($users as $user)--}}
+{{--                                        <option value="{{ $user->id }}">{{ $user->name }}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
 
-                                @error('user_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+{{--                                @error('user_id')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
                         <div class="form-group">
