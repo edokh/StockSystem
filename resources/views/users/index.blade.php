@@ -29,8 +29,7 @@
                                     <td>{{ $user->usertype }}</td>
                                     <td>
                                         <a href="{{ route('users.show', $user) }}" class="btn btn-primary">View</a>
-                                        <a href="{{ route('users.edit', $user) }}" <a
-                                            href="{{ route('users.edit', $user) }}" class="btn btn-secondary">Edit</a>
+                                        <a href="{{ route('users.edit', $user) }}" class="btn btn-secondary">Edit</a>
                                         <form class="d-inline-block" action="{{ route('users.destroy', $user) }}"
                                             method="POST">
                                             @csrf

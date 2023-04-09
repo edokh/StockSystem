@@ -14,23 +14,23 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-         \App\Models\User::factory()->create([
-             'name' => 'Dleen',
-             'email' => 'admin@gmail.com',
-                'password' => bcrypt('12345678'),
-                'usertype' => 'admin',
-         ]);
-         \App\Models\User::factory()->create([
-             'name' => 'Nazdar',
-             'email' => 'maintainer@gmail.com',
-                'password' => bcrypt('12345678'),
-                'usertype' => 'maintainer',
-         ]);
-         \App\Models\User::factory()->create([
-             'name' => 'Ali',
-             'email' => 'staff@gmail.com',
-                'password' => bcrypt('12345678'),
-                'usertype' => 'staff',
-         ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Dleen',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
+            'usertype' => 'admin',
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Nabaa',
+            'email' => 'nabaa@gmail.com',
+            'password' => bcrypt('12345678'),
+            'usertype' => 'maintainer',
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Ali',
+            'email' => 'staff@gmail.com',
+            'password' => bcrypt('12345678'),
+            'usertype' => 'staff',
+        ]);
     }
 }
