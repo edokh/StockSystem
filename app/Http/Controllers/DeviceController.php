@@ -9,6 +9,12 @@ use App\Models\Room;
 
 class DeviceController extends Controller
 {
+    public function sts()
+{
+//select title from devices where device_type_id=1 and room_id in (SELECT id FROM `rooms` WHERE department_id =1);
+
+
+}
     public function index()
     {
         $query = Device::query()->with('deviceType', 'room');

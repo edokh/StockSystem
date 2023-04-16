@@ -23,4 +23,8 @@ class Device extends Model
     {
         return $this->belongsTo(Room::class);
     }
+    public function reports()
+    {
+        return $this->hasMany(Report::class)->orderBy('id','desc');
+    }
 }

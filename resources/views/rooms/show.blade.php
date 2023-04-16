@@ -22,7 +22,11 @@
                             </tr>
                             <tr>
                                 <td><strong>Department:</strong></td>
-                                <td>{{ $room->department->name }}</td>
+                                <td>
+                                    <a href="/cp/departments/{{ $room->department->id }}">
+                                        {{ $room->department->name }}
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -32,6 +36,29 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
+
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h3>Devices:</h3>
+                            <div class="list-group">
+                                @foreach ($room->devices as $device)
+                                    <a href="/cp/devices/{{ $device->id }}"
+                                        class="list-group-item list-group-item-action">
+                                        <div class="">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span>{{ $device->title }}</span>
+                                                <span
+                                                    class="badge badge-pill py-1 px-3 {{ strtolower($device->status) == 'ok' ? 'badge-success' : 'badge-danger' }}">{{ $device->status }}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>

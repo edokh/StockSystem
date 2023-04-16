@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4> {{ __('Create Room') }}</h4>
+                    <h4> {{ __('Create Team Member') }}</h4>
                 </div>
 
                 <div class="card-body">

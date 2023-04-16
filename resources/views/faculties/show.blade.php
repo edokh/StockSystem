@@ -29,7 +29,23 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
+
+
+
+                <div class="row mx-2 my-4">
+                    <div class="col-md-6">
+                        <h3>Departments:</h3>
+                        <div class="list-group">
+                            @foreach ($faculty->departments as $department)
+                                <a href="/cp/departments/{{ $department->id }}"
+                                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    {{ $department->name }}
+
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

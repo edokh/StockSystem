@@ -13,7 +13,14 @@ class Department extends Model
         'department_id',
         'faculty_id'
     ];
-
+    public function rooms()
+    {
+        return $this->HasMany(Room::class);
+    }
+    public function staff()
+    {
+        return $this->HasMany(Staff::class);
+    }
     public function faculty()
     {
         return $this->belongsTo(Faculty::class);
